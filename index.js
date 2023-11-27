@@ -50,7 +50,7 @@ productManager.addProduct({
   title: "Producto 1",
   description: "Descripción del Producto 1",
   price: 19.99,
-  thumbnail: "url_thumbnail_1",
+  thumbnail: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQ6sgyBma0_ChoOI9NVHc3pw01Q1lEvgOanECGHz1HbUPYFn65rzHwrYLGNNQX3ESp4p0YCgaZpmX525koXi87e_FR9-gAvgSiyk4SoPBwG4zc4jNN6n2NOS8U8Q2VbNKJkdnCnFA&usqp=CAc",
   code: "P001",
   stock: 10
 });
