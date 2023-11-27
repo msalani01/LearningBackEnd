@@ -1,6 +1,9 @@
 body {
     background-color: #FFF5C2;
     text-align: center;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .center {
@@ -10,8 +13,20 @@ body {
     margin: 0 auto; 
     padding: 20px; 
     border-radius: 10px; 
+    display:grid;
 }
 
 h1 {
-    font: italic;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+.productCode {
+    margin: 30px;
+    width: 100px;
+}
+
+.productDetails {
+    margin: 10px;
 }
