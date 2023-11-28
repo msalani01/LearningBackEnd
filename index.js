@@ -39,6 +39,7 @@ function getProductDetails() {
       <p>Stock: ${product.stock}</p>
     `;
     productDetailsDiv.innerHTML = detailsHTML;
+    productDetailsDiv.classList.add('active');
   } else {
     productDetailsDiv.innerHTML = '<p>Product not found</p>';
   }
