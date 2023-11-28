@@ -19,21 +19,22 @@ body {
   }
   
   .form-label {
-    color: white; /* Añadido para que el texto sea visible */
+    color: white; 
+
   }
   
   .form-control {
-    margin: 30px;
+    margin-left: 125px;
     width: 500px;
   }
   
   .productDetails {
     margin: 10px;
-    opacity: 0; /* Configuración inicial para que esté oculto */
-    transition: opacity 0.5s ease-in-out; /* Transición suave de la opacidad durante 0.5 segundos */
+    opacity: 0; 
+    transition: opacity 0.5s ease-in-out; 
   }
   
   .productDetails.active {
-    opacity: 1; /* Cuando tiene la clase active, se mostrará con opacidad completa */
+    opacity: 1; 
   }
   
