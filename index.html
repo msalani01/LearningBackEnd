@@ -15,20 +15,34 @@
   <link rel="icon" href="./images/favicon-32x32.png">
 </head>
 <body>
+  <div class="area" >
+    <div class="container mt-5">
+      <h1 class="animate__bounceIn">Product Manager</h1>
+      
+    
+      <div class="center mt-4">
+        <label for="productCode" class="form-label">Enter Product Code:</label>
+        <input type="text" id="productCode" class="form-control">
+        <button onclick="getProductDetails()" class="btn btn-primary mt-2" style="white-space: nowrap;">Get Product Details</button>
+        <div id="productDetails"></div>
+      </div>
+    </div>
+    
+    
+    <script defer src="index.js"></script>
+    <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+    </ul>
+</div >
 
-<div class="container mt-5">
-  <h1 class="animate__bounceIn">Product Manager</h1>
-  
-
-  <div class="center mt-4">
-    <label for="productCode" class="form-label">Enter Product Code:</label>
-    <input type="text" id="productCode" class="form-control">
-    <button onclick="getProductDetails()" class="btn btn-primary mt-2" style="white-space: nowrap;">Get Product Details</button>
-    <div id="productDetails"></div>
-  </div>
-</div>
-
-
-<script defer src="index.js"></script>
 </body>
 </html>
