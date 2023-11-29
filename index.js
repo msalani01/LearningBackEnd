@@ -45,7 +45,7 @@ function getProductDetails() {
   }
 }
 
-// Agregar productos
+
 productManager.addProduct({
   id: 1,
   title: "Producto 1",
@@ -66,5 +66,5 @@ productManager.addProduct({
   stock: 15
 });
 
-// Obtener todos los productos
+
 console.log(productManager.getAllProducts());
