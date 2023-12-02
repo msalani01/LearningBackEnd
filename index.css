@@ -16,9 +16,9 @@ body {
   
   
   
-  h1 {
-    font-family: 'Roboto', sans-serif;
-  }
+  h1 { color:black; font-family: 'Trocchi', serif; font-size: 45px; font-weight: normal; line-height: 48px; margin: 0; }
+
+
   
   .form-label {
     color: white; 
@@ -100,7 +100,7 @@ body{
   list-style: none;
   width: 20px;
   height: 20px;
-  background: #F4F27E; /* Cambiado a color amarillo */
+  background: #F4F27E; 
   animation: animate 25s linear infinite;
   bottom: -150px;
 }
