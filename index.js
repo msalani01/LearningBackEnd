@@ -1,12 +1,21 @@
-const fs = require('fs')
+
+
+const fs = require('fs');
 
 class ProductManager {
-  constructor() {
-    this.products = [];
+  constructor(filePath) {
+    this.path = filePath;
+    this.products = this.loadProducts();
+  }
+
+  getProductById(productId) {
+    const product = this.products.find(product => product.id === productId);
+    return product ? { ...product } : null;
   }
 
   addProduct(product) {
     this.products.push(product);
+    this.saveProducts();
   }
 
   getAllProducts() {
@@ -17,35 +26,75 @@ class ProductManager {
     return this.products.find(product => product.code === productCode);
   }
 
+  updateProductById(productId, updatedProduct) {
+    const index = this.products.findIndex(product => product.id === productId);
+
+    if (index !== -1) {
+      this.products[index] = {
+        ...this.products[index],
+        ...updatedProduct,
+        id: productId, 
+      };
+      this.saveProducts();
+      console.log(`Product with ID ${productId} updated successfully.`);
+    } else {
+      console.error(`Product with ID ${productId} not found.`);
+    }
+  }
+
   removeProductByCode(productCode) {
     this.products = this.products.filter(product => product.code !== productCode);
+    this.saveProducts();
+  }
+
+  saveProducts() {
+    const data = JSON.stringify(this.products, null, 2);
+    fs.writeFileSync(this.path, data, 'utf8');
+  }
+
+  loadProducts() {
+    try {
+      const data = fs.readFileSync(this.path, 'utf8');
+      return JSON.parse(data);
+    } catch (error) {
+      return [];
+    }
+
+
   }
 }
 
-const productManager = new ProductManager();
 
-function getProductDetails() {
-  const productCodeInput = document.getElementById('productCode');
-  const productDetailsDiv = document.getElementById('productDetails');
+const productManager = new ProductManager('products.json');
 
-  const productCode = productCodeInput.value;
+
+function getProductDetails(productCode) {
   const product = productManager.getProductByCode(productCode);
 
   if (product) {
-    const detailsHTML = `
-      <h2>Product Details</h2>
-      <p>Title: ${product.title}</p>
-      <p>Description: ${product.description}</p>
-      <p>Price: $${product.price.toFixed(2)}</p>
-      <p>Thumbnail: <img src="${product.thumbnail}" alt="${product.title}" style="max-width: 100px;"></p>
-      <p>Stock: ${product.stock}</p>
+    return `
+      Product Details:
+      Title: ${product.title}
+      Description: ${product.description}
+      Price: $${product.price.toFixed(2)}
+      Thumbnail: ${product.thumbnail}
+      Stock: ${product.stock}
     `;
-    productDetailsDiv.innerHTML = detailsHTML;
-    productDetailsDiv.classList.add('active');
   } else {
-    productDetailsDiv.innerHTML = '<p>Product not found</p>';
+    return 'Product not found';
   }
 }
+
+const productById = productManager.getProductById(1); 
+
+if (productById) {
+  console.log('Product found:', productById);
+} else {
+  console.log('Product not found');
+}
+
+const productCode = 'P001';
+console.log(getProductDetails(productCode));
 
 
 productManager.addProduct({
@@ -67,6 +116,26 @@ productManager.addProduct({
   code: "P002",
   stock: 15
 });
+
+productManager.addProduct({
+  id: 3,
+  title: "Producto 3",
+  description: "Descripción del Producto 3",
+  price: 39.99,
+  thumbnail: "url_thumbnail_3",
+  code: "P003",
+  stock: 20
+});
+
+console.log("Before Update:", productManager.getAllProducts());
+
+productManager.updateProduct("P003", {
+  price: 49.99,
+  stock: 25
+});
+
+console.log("After Update:", productManager.getAllProducts());
+
 
 
 console.log(productManager.getAllProducts());
