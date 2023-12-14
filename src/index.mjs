@@ -31,7 +31,7 @@ class ProductManager {
       this.products[index] = {
         ...this.products[index],
         ...updatedProduct,
-        id: productId, 
+        id: productId,
       };
       this.saveProducts();
       console.log(`Product with ID ${productId} updated successfully.`);
@@ -57,14 +57,10 @@ class ProductManager {
     } catch (error) {
       return [];
     }
-
-
   }
 }
 
-
 const productManager = new ProductManager('products.json');
-
 
 function getProductDetails(productCode) {
   const product = productManager.getProductByCode(productCode);
@@ -83,7 +79,7 @@ function getProductDetails(productCode) {
   }
 }
 
-const productById = productManager.getProductById(1); 
+const productById = productManager.getProductById(1);
 
 if (productById) {
   console.log('Product found:', productById);
@@ -93,7 +89,6 @@ if (productById) {
 
 const productCode = 'P001';
 console.log(getProductDetails(productCode));
-
 
 productManager.addProduct({
   id: 1,
@@ -133,7 +128,5 @@ productManager.updateProduct("P003", {
 });
 
 console.log("After Update:", productManager.getAllProducts());
-
-
 
 console.log(productManager.getAllProducts());
